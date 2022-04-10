@@ -16,12 +16,9 @@ public class ProductController {
     @Autowired
     private ProductService service;
 
-    public ProductController(ProductService service) {
-        this.service = service;
-    }
 
     @GetMapping("/products")
-    public List<Product> getProducts(){
+    public List<Product> getProducts() throws ExecutionException, InterruptedException {
         return service.getProducts();
     }
 
@@ -31,17 +28,17 @@ public class ProductController {
     }
 
     @PutMapping("/update")
-    public String updateProduct(@RequestBody Product product)throws InterruptedException, ExecutionException {
-        return service.updateProduct(product);
+    public String updateProduct(@RequestBody String name)throws InterruptedException, ExecutionException {
+        return service.updateProduct(name);
     }
 
     @DeleteMapping("/delete")
-    public String deleteProduct(@RequestBody Product product)throws InterruptedException, ExecutionException {
+    public String deleteProduct(@RequestBody String product)throws InterruptedException, ExecutionException {
         return service.deleteProduct(product);
     }
 
     @GetMapping("/test")
-    public ResponseEntity<String> testGetEndpoint(){
+    public ResponseEntity<String> testApi(){
         return ResponseEntity.ok(("Radi!"));
     }
 }
