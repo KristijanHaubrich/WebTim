@@ -13,13 +13,16 @@ import java.util.concurrent.ExecutionException;
 @Service
 public class ProductService {
     public List<Product> getProducts() throws ExecutionException, InterruptedException {
-//        Firestore firestore = FirestoreClient.getFirestore();
-//        CollectionReference collectionReference = firestore.collection("products");
-//        ApiFuture<QuerySnapshot> future = collectionReference.get();
-//        QuerySnapshot query = future.get();
-//        List<Product> productList = new ArrayList<>();
-//        query.forEach((product) -> {productList.add(product.getReference().))};
-        return null;
+        Firestore firestore = FirestoreClient.getFirestore();
+        CollectionReference collectionReference = firestore.collection("products");
+        ApiFuture<QuerySnapshot> future = collectionReference.get();
+        List<QueryDocumentSnapshot> query = future.get().getDocuments();
+        List<Product> productList = new ArrayList<>();
+        for (QueryDocumentSnapshot document: query
+             ) {
+            productList.add(document.toObject(Product.class));
+        }
+        return productList;
 
 
     }
@@ -30,8 +33,10 @@ public class ProductService {
         return apiFuture.get().getUpdateTime().toString();
     }
 
-    public String updateProduct(String name) {
-        return null;
+    public String updateProduct(Product product) throws ExecutionException, InterruptedException {
+        Firestore firestore = FirestoreClient.getFirestore();
+        ApiFuture<WriteResult> apiFuture = firestore.collection("products").document(product.getName()).set(product);
+        return apiFuture.get().getUpdateTime().toString();
     }
 
     public String deleteProduct(String name) {

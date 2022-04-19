@@ -28,8 +28,8 @@ public class ProductController {
     }
 
     @PutMapping("/update")
-    public String updateProduct(@RequestBody String name)throws InterruptedException, ExecutionException {
-        return service.updateProduct(name);
+    public String updateProduct(@RequestBody Product product)throws InterruptedException, ExecutionException {
+        return service.updateProduct(product);
     }
 
     @DeleteMapping("/delete")
