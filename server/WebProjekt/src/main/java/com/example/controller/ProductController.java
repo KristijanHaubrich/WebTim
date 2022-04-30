@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.entity.Product;
 import com.example.service.ProductService;
+import com.example.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
