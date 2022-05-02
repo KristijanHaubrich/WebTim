@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  background-color: navy;
+  color: gray;
+  text-align: center;
+  
+}
+
+h1 {
+  margin-left: 10px;
+}
