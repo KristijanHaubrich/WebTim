@@ -2,7 +2,6 @@ package com.example.controller;
 
 import com.example.entity.Product;
 import com.example.service.ProductService;
-import com.example.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +23,11 @@ public class ProductController {
         return service.getProducts();
     }
 
+    @GetMapping("/product/{name}")
+    public Product getProduct(@PathVariable String name) throws ExecutionException, InterruptedException {
+        return service.getProduct(name);
+    }
+
     @PostMapping("/add")
     public String addProduct(@RequestBody Product product)throws InterruptedException, ExecutionException {
         return service.addProduct(product);
@@ -34,9 +38,9 @@ public class ProductController {
         return service.updateProduct(product);
     }
 
-    @DeleteMapping("/delete")
-    public String deleteProduct(@RequestBody String product)throws InterruptedException, ExecutionException {
-        return service.deleteProduct(product);
+    @DeleteMapping("/delete/{name}")
+    public String deleteProduct(@PathVariable String name)throws InterruptedException, ExecutionException {
+        return service.deleteProduct(name);
     }
 
     @GetMapping("/test")

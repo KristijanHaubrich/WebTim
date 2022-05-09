@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import ProductService from '../services/ProductService'
 import { Link } from 'react-router-dom'
@@ -9,14 +9,25 @@ const AddProductComponent = () => {
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
   const [amount, setAmount] = useState('')
+  const navigate = useNavigate();
 
 
-  const saveOrUpdateProduct = () => {
+  const saveProduct = (e) => {
+      e.preventDefault();
+      const product = {name, price, amount}
+      ProductService.addProduct(product).then((response) =>{
+        console.log(response.data)
+        navigate('/products')
+      }).catch(error => {
+        console.log(error)
+      })
 
   }
+  
 
   return (
     <div>
+      <br/>
       <div className='container'>
         <div className='row'>
           <div className='card col-md-6 offset-md-3'>
@@ -39,7 +50,7 @@ const AddProductComponent = () => {
                 <div className="form-group mb-2">
                   <label className="form-label"> Price </label>
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Enter Price"
                     name="price"
                     className="form-control"
@@ -52,7 +63,7 @@ const AddProductComponent = () => {
                 <div className="form-group mb-2">
                   <label className="form-label"> Amount </label>
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Enter Amount"
                     name="amount"
                     className="form-control"
@@ -62,7 +73,7 @@ const AddProductComponent = () => {
                   </input>
                 </div>
 
-                <button className="btn btn-success" onClick={(e) => saveOrUpdateProduct(e)} >Submit </button>
+                <button className="btn btn-success" onClick={(e) => saveProduct(e)} >Submit </button>
                 <Link to="/products" className="btn btn-danger"> Cancel </Link>
               </form>
 

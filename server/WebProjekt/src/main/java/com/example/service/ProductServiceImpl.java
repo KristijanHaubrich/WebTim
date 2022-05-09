@@ -4,6 +4,8 @@ import com.example.entity.Product;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
+import com.google.protobuf.Api;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,9 +25,21 @@ public class ProductServiceImpl implements ProductService {
             productList.add(document.toObject(Product.class));
         }
         return productList;
+    }
 
+    public Product getProduct(String name) throws ExecutionException, InterruptedException {
+        Firestore firestore = FirestoreClient.getFirestore();
+        DocumentReference reference = firestore.collection("products").document(name);
+        ApiFuture<DocumentSnapshot> future = reference.get();
+        DocumentSnapshot snapshot = future.get();
+        if(snapshot.exists()){
+            Product product = snapshot.toObject(Product.class);
+            return product;
+        }
+        return null;
 
     }
+
 
     public String addProduct(Product product) throws ExecutionException, InterruptedException {
         Firestore firestore = FirestoreClient.getFirestore();
@@ -44,4 +58,6 @@ public class ProductServiceImpl implements ProductService {
         ApiFuture<WriteResult> apiFuture = firestore.collection("products").document(name).delete();
         return "Deleted " + name;
     }
+
+
 }
