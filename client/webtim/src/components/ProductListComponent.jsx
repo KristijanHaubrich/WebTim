@@ -9,6 +9,7 @@ const ProductListComponent = () => {
     const navigate = useNavigate();
     const auth = getAuth();
     const user = auth.currentUser;
+    const uid = user.uid;
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
@@ -25,11 +26,11 @@ const ProductListComponent = () => {
 
 
     useEffect(() => {
-      getProducts();
+      getProducts(uid);
     }, [])
 
     const getProducts = () => {
-        ProductService.getProducts().then((response) => {
+        ProductService.getProducts(uid).then((response) => {
             setProducts(response.data)
             console.log(response.data);
         }).catch(error =>{

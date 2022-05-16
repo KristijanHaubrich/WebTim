@@ -4,8 +4,8 @@ const PRODUCTS_API_URL = "http://localhost:8080/api/";
 
 class ProductService {
 
-    getProducts(){
-        return axios.get(PRODUCTS_API_URL + "products");
+    getProducts(uid){
+        return axios.get(PRODUCTS_API_URL + "products" + "/" + uid);
     }
 
     addProduct(product){

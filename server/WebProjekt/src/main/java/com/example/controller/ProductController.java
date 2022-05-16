@@ -18,9 +18,9 @@ public class ProductController {
     private ProductService service;
 
 
-    @GetMapping("/products")
-    public List<Product> getProducts() throws ExecutionException, InterruptedException {
-        return service.getProducts();
+    @GetMapping("/products/{uid}")
+    public List<Product> getProducts(@PathVariable String uid) throws ExecutionException, InterruptedException {
+        return service.getProducts(uid);
     }
 
     @GetMapping("/product/{name}")

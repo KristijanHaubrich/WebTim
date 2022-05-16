@@ -8,7 +8,7 @@ import java.util.concurrent.ExecutionException;
 
 public interface ProductService {
 
-    List<Product> getProducts() throws ExecutionException, InterruptedException;
+    List<Product> getProducts(String uid) throws ExecutionException, InterruptedException;
     String addProduct(Product product) throws ExecutionException, InterruptedException;
     String updateProduct(Product product) throws ExecutionException, InterruptedException;
     String deleteProduct(String name);

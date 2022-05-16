@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import ProductService from '../services/ProductService'
 import { Link } from 'react-router-dom'
+import { getAuth } from "firebase/auth";
+
 
 
 const AddProductComponent = () => {
@@ -10,11 +12,14 @@ const AddProductComponent = () => {
   const [price, setPrice] = useState('')
   const [amount, setAmount] = useState('')
   const navigate = useNavigate();
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const uid = user.uid;
 
 
   const saveProduct = (e) => {
       e.preventDefault();
-      const product = {name, price, amount}
+      const product = {name, price, amount, uid}
       ProductService.addProduct(product).then((response) =>{
         console.log(response.data)
         navigate('/products')

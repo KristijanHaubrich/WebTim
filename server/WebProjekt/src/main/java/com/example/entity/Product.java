@@ -5,6 +5,16 @@ public class Product {
     private String name;
     private int amount;
     private double price;
+    private String uid;
+
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
     public String getName() {
         return name;

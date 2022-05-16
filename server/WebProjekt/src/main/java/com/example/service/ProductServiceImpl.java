@@ -4,25 +4,26 @@ import com.example.entity.Product;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
-import com.google.protobuf.Api;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-    public List<Product> getProducts() throws ExecutionException, InterruptedException {
+    public List<Product> getProducts(String uid) throws ExecutionException, InterruptedException {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference collectionReference = firestore.collection("products");
         ApiFuture<QuerySnapshot> future = collectionReference.get();
         List<QueryDocumentSnapshot> query = future.get().getDocuments();
         List<Product> productList = new ArrayList<>();
-        for (QueryDocumentSnapshot document: query
-             ) {
-            productList.add(document.toObject(Product.class));
+        for (QueryDocumentSnapshot document: query) {
+            Product product = document.toObject(Product.class);
+            if(Objects.equals(product.getUid(), uid)){
+                productList.add(product);
+            }
         }
         return productList;
     }
