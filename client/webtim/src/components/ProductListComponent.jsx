@@ -1,10 +1,28 @@
 import React, {useEffect, useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
 import ProductService from '../services/ProductService'
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const ProductListComponent = () => {
 
     const [products, setProducts] = useState([])
+    const navigate = useNavigate();
+    const auth = getAuth();
+    const user = auth.currentUser;
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        // ...
+      } else {
+        // User is signed out
+        // ...
+        navigate('/SignIn')
+      }
+    });
+
+
 
     useEffect(() => {
       getProducts();
@@ -32,7 +50,7 @@ const ProductListComponent = () => {
 
   return (
     <div className='container'>
-          <h1 className="text-center">Products in the basket</h1>
+          <h1 className="text-center">Products in the basket {user.displayName}</h1>
           <Link to = "/add" className='btn btn-primary mb-2'>Add Product</Link>
           <div className="row">
               <table className='table table-striped table-bordered table-hover'>
