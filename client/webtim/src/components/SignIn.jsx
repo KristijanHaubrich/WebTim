@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { auth, logInWithEmailAndPassword } from "../firebase";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-
+import classes from "../styles/Form.module.scss";
 
 const SignIn = () => {
 
@@ -31,33 +31,50 @@ const SignIn = () => {
 
 
   return (
-    <div className="login">
-      <div className="login__container">
+    <div className={classes.login}>
+      <div className={classes.form}>
+
+        <div className={classes.form__banner}>
+          LOGIN
+        </div>
+        <br />
         <input
           type="text"
-          className="login__textBox"
+          required = "required"
+          id='email'
+          className={classes.form__input}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
+          placeholder = "Email"
         />
+        
         <br />
+        <br />  
+     
         <input
           type="password"
-          className="login__textBox"
+          className={classes.form__input}
+          required = "required"
+          id='password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        />
+          placeholder = "Password"
+        /> 
+        
+       
         <br />
+        <br />
+        
         <button
-          className="login__btn"
           // onClick={() => signInWithEmailAndPassword(auth, email, password)}
           onClick={signIn}
         >
           Login
         </button>
+
         <br />
-        <div>
+        <br />
+        <div className={classes.form__acc}>
           Don't have an account? <Link to="/SignUp">Sign Up</Link> now.
         </div>
       </div>

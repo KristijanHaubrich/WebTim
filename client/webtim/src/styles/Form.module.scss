@@ -1,0 +1,109 @@
+@import './variables.scss';
+
+
+//colors
+$clr-primary: #18ffff;
+$clr-primary-light: #adffff;
+$clr-primary-dark: #091034;
+$clr-gray100: #f9fbff;
+$clr-gray150: #f4f6fb;
+$clr-gray200: #eef1f6;
+$clr-gray300: #e1e5ee;
+$clr-gray400: #767b91;
+$clr-gray500: #4f546c;
+$clr-gray600: #2a324b;
+$clr-gray700: #161d34;
+$clr-bg: #060b23;
+
+//border radius
+$radius: 0.5rem;
+
+//styling
+.login{
+    font-family: $Poppins;
+    height: 100vh;
+    display:grid;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    background-color: $clr-bg;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.form{
+    position:relative;
+    width: 20rem;
+    height: 3rem;
+    margin-bottom: 10rem;
+
+
+    &__input{
+        position: absolute;
+        border: 2px solid $clr-gray300;
+        border-radius: $radius;
+        width: 100%;
+        height: 100%;
+        color:white;
+        outline: none;
+        padding: 1.25rem;
+        background: none;
+
+        ::placeholder{
+            color: white;
+        }
+
+        &:hover{
+            border-color: $clr-primary-light;
+        }
+
+        &:focus{
+            border-color: $clr-primary;
+        }
+    }
+
+    button{
+        cursor: pointer;
+        outline: none;
+        padding: 0.75rem 1.25rem;
+        border-radius: $borderRadius;
+        font-size: 1rem;
+        font-family: inherit;
+        background: $clr-primary;
+        color: $dark;
+        border: 1px solid transparent;
+        transition: 0.3s ease all;
+
+        &:hover{
+            border-color: $clr-primary-light;
+            background: rgba($clr-primary-light, 0.1);
+            color: $clr-primary-light;
+        }
+
+        &:active{
+            border-color: $primary;
+            background: linear-gradient(rgba($primary,0.2),rgba($primary,0.3));
+            color: $primary;
+        }
+    }
+
+    &__acc{
+        color: #e1e5ee;
+    
+    }
+    
+    &__banner{
+        font-size: 3rem;
+        color: white;
+    }
+    
+}
+
+
+

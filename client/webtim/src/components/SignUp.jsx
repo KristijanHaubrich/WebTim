@@ -5,7 +5,7 @@ import {
   auth,
   registerWithEmailAndPassword,
 } from "../firebase";
-
+import classes from "../styles/Form.module.scss";
 
 const SignUp = () => {
 
@@ -27,36 +27,45 @@ const SignUp = () => {
 
 
   return (
-    <div className="register">
-      <div className="register__container">
+    <div className={classes.login}>
+      <div className={classes.form}>
+
+      <div className={classes.form__banner}>
+          REGISTER
+      </div>
+
+        <br />
         <input
           type="text"
-          className="register__textBox"
+          className={classes.form__input}
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Full Name"
         />
         <br/>
+        <br/>
         <input
           type="text"
-          className="register__textBox"
+          className={classes.form__input}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="E-mail Address"
         />
         <br/>
+        <br/>
         <input
           type="password"
-          className="register__textBox"
+          className={classes.form__input}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
         <br/>
-        <button className="register__btn" onClick={register}>
+        <br/>
+        <button onClick={register}>
           Register
         </button>
-        <div>
+        <div className={classes.form__acc}>
         <br/>
           Already have an account? <Link to="/SignIn">Login</Link> now.
         </div>

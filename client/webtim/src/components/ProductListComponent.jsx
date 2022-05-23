@@ -52,7 +52,6 @@ const ProductListComponent = () => {
   return (
     <div className='container'>
           <h1 className="text-center">Products in the basket {user.displayName}</h1>
-          <Link to = "/add" className='btn btn-primary mb-2'>Add Product</Link>
           <div className="row">
               <table className='table table-striped table-bordered table-hover'>
                   <thead className='thead-dark'>
