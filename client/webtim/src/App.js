@@ -1,6 +1,7 @@
 import './App.css';
 import ProductListComponent from './components/ProductListComponent';
 import HeaderComponent from './components/HeaderComponent';
+import ShopsComponent from './components/ShopsComponent';
 import FooterComponent from './components/FooterComponent';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AddProductComponent from './components/AddProductComponent';
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/add" element={<AddProductComponent />}> </Route>
                 <Route path="/signin" element={<ProductListComponent />}> </Route>
                 <Route path='/signup' element={<ProductListComponent />}> </Route>
+                <Route path='/shops' element={<ShopsComponent />}> </Route>
                 <Route path="*" element={<ErrorPageComponent />} />
               </Routes>
             </div>

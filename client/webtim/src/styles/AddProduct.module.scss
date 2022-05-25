@@ -1,0 +1,67 @@
+@import './variables.scss';
+
+$clr-primary-danger: red;
+$clr-primary-light-danger: #FF7F7F;
+
+$clr-primary-success: green;
+$clr-primary-light-success: #90ee90;
+
+
+$bg: #060b23;
+
+.container{
+    color: $bg;
+    font-family: $Poppins;
+}
+
+.button_danger{
+    cursor: pointer;
+    margin: 5px;
+    outline: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: $borderRadius;
+    font-size: 1rem;
+    font-family: inherit;
+    background: $clr-primary-danger;
+    color: white;
+    border: 1px solid transparent;
+    transition: 0.3s ease all;
+
+    &:hover{
+        border-color: $clr-primary-light-danger;
+        background: rgba($clr-primary-light-danger, 0.1);
+        color: $clr-primary-light-danger;
+    }
+
+    &:active{
+        border-color: $clr-primary-danger;
+        background: linear-gradient(rgba($clr-primary-danger,0.2),rgba($clr-primary-danger,0.3));
+        color: $clr-primary-danger;
+    }
+}
+
+.button_success{
+    cursor: pointer;
+    outline: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: $borderRadius;
+    font-size: 1rem;
+    font-family: inherit;
+    background: $clr-primary-success;
+    margin: 5px;
+    color: white;
+    border: 1px solid transparent;
+    transition: 0.3s ease all;
+
+    &:hover{
+        border-color: $clr-primary-light-success;
+        background: rgba($clr-primary-light-success, 0.1);
+        color: $clr-primary-light-success;
+    }
+
+    &:active{
+        border-color: $clr-primary-success;
+        background: linear-gradient(rgba($clr-primary-success,0.2),rgba($clr-primary-success,0.3));
+        color: $clr-primary-success;
+    }
+}

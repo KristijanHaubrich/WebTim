@@ -41,7 +41,7 @@ $radius: 0.5rem;
     position:relative;
     width: 20rem;
     height: 3rem;
-    margin-bottom: 10rem;
+    margin-bottom: 30rem;
 
 
     &__input{
@@ -103,6 +103,12 @@ $radius: 0.5rem;
         color: white;
     }
     
+}
+
+.logo{
+    height: 100px;
+    width: 100px;
+    margin-bottom: 3rem;
 }
 
 

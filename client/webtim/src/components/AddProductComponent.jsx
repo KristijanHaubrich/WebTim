@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router'
 import ProductService from '../services/ProductService'
 import { Link } from 'react-router-dom'
 import { getAuth } from "firebase/auth";
-
+import classes from "../styles/AddProduct.module.scss";
 
 
 const AddProductComponent = () => {
@@ -33,7 +33,7 @@ const AddProductComponent = () => {
   return (
     <div>
       <br/>
-      <div className='container'>
+      <div className={classes.container}>
         <div className='row'>
           <div className='card col-md-6 offset-md-3'>
             <h2 className='text-center'> Add new product</h2>
@@ -78,8 +78,8 @@ const AddProductComponent = () => {
                   </input>
                 </div>
 
-                <button className="btn btn-success" onClick={(e) => saveProduct(e)} >Submit </button>
-                <Link to="/products" className="btn btn-danger"> Cancel </Link>
+                <button className={classes.button_success} onClick={(e) => saveProduct(e)} >Submit </button>
+                <Link to="/products" className={classes.button_danger}> Cancel </Link>
               </form>
 
             </div>

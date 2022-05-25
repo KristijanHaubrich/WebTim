@@ -4,6 +4,7 @@ import { auth, logInWithEmailAndPassword } from "../firebase";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import classes from "../styles/Form.module.scss";
+import banner from './../icon.png';
 
 const SignIn = () => {
 
@@ -33,7 +34,7 @@ const SignIn = () => {
   return (
     <div className={classes.login}>
       <div className={classes.form}>
-
+        <div><img src={banner} alt = "banner" className={classes.logo} /></div>
         <div className={classes.form__banner}>
           LOGIN
         </div>

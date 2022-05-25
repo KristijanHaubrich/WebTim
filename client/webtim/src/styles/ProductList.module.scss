@@ -1,0 +1,35 @@
+@import './variables.scss';
+
+$clr-primary: red;
+$clr-primary-light: #FF7F7F;
+$bg: #060b23;
+
+.container{
+    color: $bg;
+    font-family: $Poppins;
+}
+
+.button{
+    cursor: pointer;
+    outline: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: $borderRadius;
+    font-size: 1rem;
+    font-family: inherit;
+    background: $clr-primary;
+    color: white;
+    border: 1px solid transparent;
+    transition: 0.3s ease all;
+
+    &:hover{
+        border-color: $clr-primary-light;
+        background: rgba($clr-primary-light, 0.1);
+        color: $clr-primary-light;
+    }
+
+    &:active{
+        border-color: $primary;
+        background: linear-gradient(rgba($primary,0.2),rgba($primary,0.3));
+        color: $primary;
+    }
+}

@@ -68,7 +68,7 @@ const HeaderComponent = () => {
                                 <a href='/add' onClick={menuToggleHandler}>Add Product</a>
                             </li>
                             <li>
-                                <a href='/products' onClick={menuToggleHandler}>Shops</a>
+                                <a href='/shops' onClick={menuToggleHandler}>Catalogs</a>
                             </li>
                             <li>
                                 <a href='/SignIn' onClick={() => { menuToggleHandler(); logout(); }}>Sign out</a>

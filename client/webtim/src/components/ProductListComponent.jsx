@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { Link, useNavigate} from 'react-router-dom'
 import ProductService from '../services/ProductService'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import classes from "../styles/ProductList.module.scss";
 
 const ProductListComponent = () => {
 
@@ -50,7 +51,7 @@ const ProductListComponent = () => {
     
 
   return (
-    <div className='container'>
+    <div className={classes.container}>
           <h1 className="text-center">Products in the basket {user.displayName}</h1>
           <div className="row">
               <table className='table table-striped table-bordered table-hover'>
@@ -71,7 +72,7 @@ const ProductListComponent = () => {
                                   <td>{product.price} kn</td>
                                   <td>{product.amount}</td>
                                   <td>
-                                  <button className = "btn btn-danger" onClick = {() => deleteProduct(product.name)}> Delete</button>
+                                  <button className={classes.button}  onClick = {() => deleteProduct(product.name)}> Delete</button>
                                   </td>
 
                               </tr>
@@ -82,7 +83,7 @@ const ProductListComponent = () => {
               </table>
               <br/>
               <h3 className='text-center'><em><b>
-                      Total price: {
+                      TOTAL PRICE: {
                           products.reduce((previous, current) => previous + current.amount*current.price, 0)
                       } kn
               </b></em></h3>

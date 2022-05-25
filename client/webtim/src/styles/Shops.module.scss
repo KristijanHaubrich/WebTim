@@ -1,0 +1,56 @@
+@import './variables.scss';
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin-top: 10px;
+    width: 300px;
+    height: 300px;
+    border-radius: 2rem;
+  }
+
+ .container{
+        align-items: center;
+        display:grid;
+        justify-content: center;
+ } 
+
+  ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $spacing-lg;
+    @include breakpoint(md){
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 0;
+        margin-right: calc(0.5rem + #{$spacing-md});
+    }
+    li{
+        &:not(:last-child){
+            margin-bottom: $spacing-lg;
+            @include breakpoint(md){
+                margin-bottom: 0;
+                margin-right: $spacing-md;
+            }
+        }
+
+        a{
+            text-decoration: none;
+            color: inherit;
+            padding: 0.75rem 1.25rem;
+            border-radius: $borderRadius;
+            transition: 0.3s ease all;
+
+            &:hover{
+                background: rgba($light,0.1);
+            }
+            &:active{
+                border-radius: calc(#{$borderRadius} + 6px);
+                background: linear-gradient(rgba($light,0.1), rgba($light,0.2));
+            }
+        }
+       
+    }
+
+}
