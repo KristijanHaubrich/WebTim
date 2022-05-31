@@ -3,8 +3,12 @@ import { Link, useNavigate} from 'react-router-dom'
 import ProductService from '../services/ProductService'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import classes from "../styles/ProductList.module.scss";
+import { Modal, Button } from 'react-bootstrap';
+import UpdateProductForm from './UpdateProductForm';
 
 const ProductListComponent = () => {
+
+    const [show, setShow] = useState(false);
 
     const [products, setProducts] = useState([])
     const navigate = useNavigate();
@@ -48,6 +52,20 @@ const ProductListComponent = () => {
         })
          
      }
+
+     const updateProduct = (product) => {
+        ProductService.updateProduct(product).then((response) =>{
+         getProducts();
+ 
+        }).catch(error =>{
+            console.log(error);
+        })
+         
+     }
+
+     const handleShow = () => setShow(true);
+     const handleClose = () => setShow(false);
+
     
 
   return (
@@ -72,6 +90,7 @@ const ProductListComponent = () => {
                                   <td>{product.price} kn</td>
                                   <td>{product.amount}</td>
                                   <td>
+                                  <button className={classes.button} style={{marginRight: 10, background: "deepskyblue"}} onClick = {handleShow} data-toggle="modal" > Update</button>
                                   <button className={classes.button}  onClick = {() => deleteProduct(product.name)}> Delete</button>
                                   </td>
 
@@ -88,6 +107,21 @@ const ProductListComponent = () => {
                       } kn
               </b></em></h3>
           </div>
+
+          <Modal show={show} onHide={handleClose}>
+              <Modal.Header>
+                  <Modal.Title>
+                      Update Product
+                  </Modal.Title>
+
+              </Modal.Header>
+              <Modal.Body>
+                      <UpdateProductForm/>
+              </Modal.Body>
+              <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose}>Cancel</Button>
+              </Modal.Footer>
+          </Modal>
 
 
       </div>

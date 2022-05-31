@@ -15,6 +15,7 @@ const AddProductComponent = () => {
   const auth = getAuth();
   const user = auth.currentUser;
   const uid = user.uid;
+  
 
 
   const saveProduct = (e) => {
@@ -48,6 +49,7 @@ const AddProductComponent = () => {
                     className="form-control"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    required
                   >
                   </input>
                 </div>
@@ -61,6 +63,7 @@ const AddProductComponent = () => {
                     className="form-control"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
+                    required
                   >
                   </input>
                 </div>
@@ -74,6 +77,7 @@ const AddProductComponent = () => {
                     className="form-control"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
+                    required
                   >
                   </input>
                 </div>

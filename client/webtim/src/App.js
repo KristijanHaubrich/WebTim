@@ -11,6 +11,7 @@ import SignUp from './components/SignUp';
 import React, { Component, useEffect } from 'react'
 import { auth, db, logout } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   var [user, loading, error] = useAuthState(auth);
