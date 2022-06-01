@@ -1,8 +1,11 @@
 import React from 'react'
+import HeaderComponent from './HeaderComponent'
 
 function ErrorPageComponent() {
   return (
-    <div>ERROR! Page not found</div>
+    <div>
+      
+    </div>
   )
 }
 

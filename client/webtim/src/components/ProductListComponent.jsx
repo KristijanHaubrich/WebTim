@@ -64,7 +64,10 @@ const ProductListComponent = () => {
      }
 
      const handleShow = () => setShow(true);
-     const handleClose = () => setShow(false);
+     const handleClose = () => {
+         getProducts();
+         setShow(false);
+        }
 
     
 
